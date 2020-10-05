@@ -1,8 +1,8 @@
 //https://jenkinsci.github.io/job-dsl-plugin/#path/pipelineJob
 BRANCH_NAME = 'master'
 GIT_URL = 'https://github.com/nawinkumar94/Two-Tier-System-in-Ansible.git'
-GIT_CREDENTIALS_ID = 'a0c3162c-f34d-4420-b302-a2bf1ffac98e'
-AWS_CREDENTIALS_ID = 'd41efd75-3fc1-43d2-a403-4294fa986482'
+GIT_CREDENTIALS_ID = 'e8e4495f-fc6c-444e-9b5e-c7d93c44e05b'
+AWS_CREDENTIALS_ID = '53d7be66-682e-47a5-9dc9-29bff7b17feb'
 
 pipelineJob('AnsibleInfrastructure') {
   displayName('Scm_Ansible')
