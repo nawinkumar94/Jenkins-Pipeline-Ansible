@@ -5,7 +5,7 @@ GIT_CREDENTIALS_ID = 'a0c3162c-f34d-4420-b302-a2bf1ffac98e'
 AWS_CREDENTIALS_ID = 'd41efd75-3fc1-43d2-a403-4294fa986482'
 
 pipelineJob('AnsibleInfrastructure') {
-  displayName('Scm')
+  displayName('Scm_Ansible')
   description('Deploy Ansible Roles')
   logRotator {
         numToKeep(10)

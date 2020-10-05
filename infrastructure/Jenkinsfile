@@ -9,7 +9,7 @@ node() {
             //Specifying a local directory where the Git repository will be checked out
             extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: workspace ]],
             //Specifying the repository to track
-            userRemoteConfigs: [[url: "${GIT_URL}", credentialsId: "${CREDENTIALS_ID}"]]
+            userRemoteConfigs: [[url: "${GIT_URL}", credentialsId: "${GIT_CREDENTIALS_ID}"]]
           ]
         )
       println("Git Checkout Success")
