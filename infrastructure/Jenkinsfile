@@ -19,10 +19,10 @@ node() {
         sh('''
             #!/bin/bash
 
-            if [ ! -d ${JENKINS_HOME}/custom_tools/ansible]; then
+            if [ ! -d ${JENKINS_HOME}/project/ansible]; then
               echo ${JENKINS_HOME}
-              mkdir -p ${JENKINS_HOME}/custom_tools/ansible
-              cd ${JENKINS_HOME}/custom_tools/ansible
+              mkdir -p ${JENKINS_HOME}/project/ansible
+              cd ${JENKINS_HOME}/project/ansible
             fi
         ''')
 
