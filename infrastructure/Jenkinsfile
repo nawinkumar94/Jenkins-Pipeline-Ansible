@@ -1,0 +1,60 @@
+node() {
+  def workspace = 'ansible_workspace'
+    stage('GitCheckout') {
+      println("Git Checkout ...")
+        checkout(
+          [
+            $class: 'GitSCM',
+            branches: [[name: "${BRANCH_NAME}"]],
+            //Specifying a local directory where the Git repository will be checked out
+            extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: workspace ]],
+            //Specifying the repository to track
+            userRemoteConfigs: [[url: "${GIT_URL}", credentialsId: "${CREDENTIALS_ID}"]]
+          ]
+        )
+      println("Git Checkout Success")
+    }
+
+    stage('Download and Install Ansible'){
+        sh('''
+            #!/bin/bash
+            if [ ! -d ${JENKINS_HOME}/custom_tools]; then
+              echo $PWD
+              echo ${JENKINS_HOME}
+              mkdir -p ${JENKINS_HOME}/custom_tools
+            fi
+
+            if [ ! -f ${JENKINS_HOME}/custom_tools/ansible ]; then
+              sudo curl -O https://bootstrap.pypa.io/get-pip.py
+              python get-pip.py
+              pip install ansible --upgrade
+              ansible --version
+            fi
+        ''')
+    }
+
+  stage('Execute Playbook'){
+    try{
+      dir(workspace){
+        println('Executing Static Playbook')
+        static_play_exec()
+      }
+    }
+    catch(err){
+      println('Execution Failed')
+      println(err)
+    }
+    finally(){
+      deleteDir();
+    }
+  }
+
+  def static_play_exec(){
+    println('playbook execution starts')
+    ansiblePlaybook(
+    playbook: 'setup-app.yml',
+    become: 'true',
+    credentialsId: "${AWS_CREDENTIALS_ID}",
+    inventory: 'hosts-dev'
+    )
+  }
