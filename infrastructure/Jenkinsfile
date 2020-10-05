@@ -44,7 +44,7 @@ node() {
       println('Execution Failed')
       println(err)
     }
-    finally(){
+    finally{
       deleteDir();
     }
   }
