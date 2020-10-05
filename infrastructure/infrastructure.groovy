@@ -1,5 +1,5 @@
 //https://jenkinsci.github.io/job-dsl-plugin/#path/pipelineJob
-BRANCH_NAME = 'main'
+BRANCH_NAME = 'master'
 GIT_URL = 'https://github.com/nawinkumar94/Two-Tier-System-in-Ansible.git'
 GIT_CREDENTIALS_ID = 'a0c3162c-f34d-4420-b302-a2bf1ffac98e'
 AWS_CREDENTIALS_ID = 'd41efd75-3fc1-43d2-a403-4294fa986482'
@@ -33,7 +33,7 @@ definition {
                                 credentials(GIT_CREDENTIALS_ID)
                                 url("https://github.com/nawinkumar94/Jenkins-Pipeline-Ansible.git")
                             }
-                        branch('master')
+                        branch('*/main')
                         }
                     scriptPath('infrastructure/Jenkinsfile')
                     lightweight()
