@@ -18,8 +18,8 @@ node() {
     stage('Download and Install Ansible'){
         sh('''
             #!/bin/bash
+            
             if [ ! -d ${JENKINS_HOME}/custom_tools]; then
-              echo $PWD
               echo ${JENKINS_HOME}
               mkdir -p ${JENKINS_HOME}/custom_tools
             fi
