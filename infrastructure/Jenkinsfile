@@ -48,7 +48,7 @@ node() {
       deleteDir();
     }
   }
-
+}
   def static_play_exec(){
     println('playbook execution starts')
     ansiblePlaybook(
