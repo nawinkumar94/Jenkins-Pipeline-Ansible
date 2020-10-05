@@ -23,17 +23,12 @@ node() {
               echo ${JENKINS_HOME}
               mkdir -p ${JENKINS_HOME}/custom-tools
             fi
-            
+
             sudo apt-get update -y
             sudo apt-get install ansible -y
             ansible --version
-            if [[ "${?}" -eq 0 ]];
-            then
-                echo 'Ansible Installation Completed'
-            else
-                echo 'Ansible Installation Failed'
-                exit 1
-            fi
+
+            echo 'Ansible Installation Completed'
         ''')
     }
 
