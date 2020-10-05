@@ -18,19 +18,23 @@ node() {
     stage('Download and Install Ansible'){
         sh('''
             #!/bin/bash
-            
-            if [ ! -d ${JENKINS_HOME}/custom_tools]; then
-              echo ${JENKINS_HOME}
-              mkdir -p ${JENKINS_HOME}/custom_tools
-            fi
 
-            if [ ! -f ${JENKINS_HOME}/custom_tools/ansible ]; then
+            if [ ! -d ${JENKINS_HOME}/custom_tools/ansible]; then
+              echo ${JENKINS_HOME}
+              mkdir -p ${JENKINS_HOME}/custom_tools/ansible
+              cd ${JENKINS_HOME}/custom_tools/ansible
+            fi
+        ''')
+
+        dir(workspace) {
+           sh ('''
+              #!/bin/bash
               sudo curl -O https://bootstrap.pypa.io/get-pip.py
               python get-pip.py
               pip install ansible --upgrade
               ansible --version
-            fi
         ''')
+        }
     }
 
   stage('Execute Playbook'){
