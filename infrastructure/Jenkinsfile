@@ -51,9 +51,7 @@ node() {
   def static_play_exec(){
     println('playbook execution starts')
     ansiblePlaybook(
-    playbook: 'setup-app.yml',
-    become: 'true',
-    credentialsId: "${AWS_CREDENTIALS_ID}",
-    inventory: 'hosts-dev'
+    playbook: 'site.yml',
+    become: 'true'
     )
   }
