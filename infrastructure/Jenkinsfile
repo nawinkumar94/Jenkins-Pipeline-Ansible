@@ -36,7 +36,7 @@ node() {
     try{
       dir(workspace){
         println('Executing Static Playbook')
-        static_play_exec()
+        play_exec()
       }
     }
     catch(err){
@@ -44,11 +44,11 @@ node() {
       println(err)
     }
     finally{
-      //deleteDir();
+      deleteDir();
     }
   }
 }
-  def static_play_exec(){
+  def play_exec(){
     println('playbook execution starts')
     ansiblePlaybook(
     playbook: 'site.yml',
